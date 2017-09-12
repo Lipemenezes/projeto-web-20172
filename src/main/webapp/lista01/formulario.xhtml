@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Atividade 01 - Formulario</title>
+</h:head>
+<h:body>
+	<h:form>
+		<div align="center">
+			<p:panelGrid columns="2">
+
+				<p:outputLabel for="nome" value="Nome Completo" />
+				<p:inputText id="nome" value="#{formulario.nome}" />
+
+
+				<p:outputLabel for="matricula" value="Matricula" />
+				<p:inputText id="matricula" value="#{formulario.matricula}" />
+
+				<p:outputLabel for="sexo" value="Sexo" />
+				<p:selectOneRadio id="sexo" value="#{formulario.sexo}">
+					<f:selectItem itemLabel="M" itemValue="M" />
+					<f:selectItem itemLabel="F" itemValue="F" />
+				</p:selectOneRadio>
+
+				<p:outputLabel for="nota1" value="Nota P1:" />
+				<p:inputNumber id="nota1" value="#{formulario.nota1}"
+					required="true" />
+
+				<p:outputLabel for="nota2" value="Nota P2:" />
+				<p:inputNumber id="nota2" value="#{formulario.nota2}"
+					required="true" />
+
+				<p:outputLabel for="nota3" value="Nota P3:" />
+				<p:inputNumber id="nota3" value="#{formulario.nota3}"
+					required="true" />
+
+
+				<p:commandButton value="Salvar" icon="ui-icon-star"
+					action="#{formulario.calcularMedia}">
+				</p:commandButton>
+				<p:commandButton value="Limpar" icon="ui-icon-star"
+					update="messages" type="reset">
+				</p:commandButton>
+			</p:panelGrid>
+		</div>
+	</h:form>
+</h:body>
+</html>

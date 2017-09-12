@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+	<title>Atividade 02 - Usar recursos de frameworks css</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- CSS IMPORTS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<link rel="stylesheet" href="../media/font-awesome-4.7.0/css/font-awesome.min.css">
+	
+	<!-- JAVASCRIPT IMPORTS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+		    $('#btn-open-modal').on('click', function(){
+		    	$('#modal1').modal();
+		    });
+		    
+		    $('#close-modal').on('click', function(){
+		    	$('#modal1').modal('close');
+		    });
+
+		});
+	</script>
+</head>
+<body>
+
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo" style="margin-left: 10px;">Atividade	02</a>
+		</div>
+	</nav>
+
+	<div class="center-align">
+		<button id="btn-open-modal" data-target="modal1" class="btn modal-trigger">
+			Submit <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+		</button>
+	</div>
+	<br />
+	<div>
+		 <img class="materialboxed center-align" data-caption="A picture of a way with a group of trees in a park" width="250" src="../media/images/jair-bolsonaro.jpg">
+	</div>
+
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<h4>Atividade 02</h4>
+			<p>Materialize modal</p>
+			
+			<div class="progress">
+			    <div class="indeterminate"></div>
+			</div>
+			
+		</div>
+		<div class="modal-footer">
+			<a id="close-modal" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+		</div>
+	</div>
+
+</body>
+</html>
