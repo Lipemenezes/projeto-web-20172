@@ -17,7 +17,7 @@ import java.sql.SQLException;
  */
 public class ConnectionFactory {
 
-	public Connection obterConexao() {
+	public static Connection obterConexao() {
 		String nomeEsquema = "dbprojeto1";
 		String enderecoBanco = "jdbc:mysql://localhost/" + nomeEsquema;
 		String usuario = "root";
