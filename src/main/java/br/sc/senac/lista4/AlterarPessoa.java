@@ -27,9 +27,9 @@ public class AlterarPessoa implements Acao {
 		PessoaDao pessoaDao = new PessoaDao();
 
 		if (pessoaDao.atualizar(pessoa) == true) {
-			request.setAttribute("msg", "Carro atualizado com sucesso, ID: " + pessoa.getId());
+			request.setAttribute("msg", "Pessoa atualizado com sucesso, ID: " + pessoa.getId());
 		} else {
-			request.setAttribute("msg", "Erro ao atualizar carro, ID: " + pessoa.getId());
+			request.setAttribute("msg", "Erro ao atualizar pessoa, ID: " + pessoa.getId());
 		}
 
 		ListarPessoas acaoListarPessoas = new ListarPessoas();

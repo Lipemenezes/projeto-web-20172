@@ -17,7 +17,7 @@ public class ObterPessoa implements Acao {
 		request.setAttribute("pessoa", pessoa);
 
 		// Encaminha para a página de detalhe/edição
-		return "/lista4/edicaoPessoa.jsp";
+		return "/lista04/edicaoPessoa.jsp";
 	}
 
 }

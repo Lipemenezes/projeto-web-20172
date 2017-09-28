@@ -12,7 +12,7 @@ CREATE TABLE endereco (
 CREATE TABLE PESSOA (
 	id DOUBLE PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(60),
-    cpf VARCHAR(11),
+    cpf VARCHAR(11) UNIQUE,
     endereco_id double,
     CONSTRAINT endereco_id FOREIGN KEY (endereco_id)
     REFERENCES endereco(id) ON DELETE CASCADE ON UPDATE CASCADE

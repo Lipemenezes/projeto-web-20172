@@ -9,6 +9,7 @@
 	<body>
 		<h1>Lista de carros</h1>
 		<a href="/projeto-web/Controller?classe=ListarPessoas">Listar</a>
+		<a href="/projeto-web/Controller?classe=ToInserirPessoa">Cadastrar</a>
 		<table>
 		<tr>
 			<th>#</th>

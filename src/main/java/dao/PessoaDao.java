@@ -19,17 +19,18 @@ public class PessoaDao {
 
 	public int inserir(Pessoa p) {
 		int idInserido = -1;
-		String sql = "INSERT INTO PESSOA(NOME, CPF, ENDERECO) VALUES (?, ?)";
+		String sql = "INSERT INTO PESSOA(NOME, CPF, ENDERECO_ID) VALUES (?, ?, ?)";
 		try {
 			PreparedStatement ps = this.getConexao().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
 			// Preenche a consulta com os atributos do objeto
 			ps.setString(1, p.getNome());
 			ps.setString(2, p.getCpf());
-			ps.setLong(3, p.getEndereco().getId());
 			
 			EnderecoDao enderecoDao = new EnderecoDao();
-			enderecoDao.inserir(p.getEndereco());
+			Long idEndereco = new Long(enderecoDao.inserir(p.getEndereco()));
+			p.getEndereco().setId(idEndereco);
+			ps.setLong(3, idEndereco);
 
 			ps.executeUpdate();
 
@@ -114,6 +115,37 @@ public class PessoaDao {
 			if (rs.next()) {
 				p = new Pessoa();
 				p.setId(new Long(id));
+				p.setNome(rs.getString("nome"));
+				p.setCpf(rs.getString("cpf"));
+				int idEnd = rs.getInt("endereco_id");
+				EnderecoDao endDao = new EnderecoDao();
+				Endereco endereco = endDao.obterPorId(idEnd);
+				p.setEndereco(endereco);
+			}
+			
+
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return p;
+	}
+	
+	public Pessoa obterPorCpf(String cpf) {
+		Pessoa p = null;
+
+		String sql = " SELECT * FROM PESSOA WHERE CPF=? LIMIT 1";
+
+		PreparedStatement stmt;
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, cpf);
+
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				p = new Pessoa();
+				p.setId(new Long(rs.getLong("id")));
 				p.setNome(rs.getString("nome"));
 				p.setCpf(rs.getString("cpf"));
 				int idEnd = rs.getInt("endereco_id");

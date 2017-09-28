@@ -4,24 +4,22 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>Lista 4 - Editar Pessoa</title>
+		<title>Lista 4 - Cadastro Pessoa</title>
 	</head>
 	<body>
-		<form action="/projeto-web/Controller?classe=AlterarPessoa" method="POST">
+		<form action="/projeto-web/Controller?classe=InserirPessoa" method="POST">
 			<fieldset>
 				<legend>Dados da Pessoa:</legend>
-				<input type="text" name="idpessoa" value="${pessoa.id}" hidden>
 				<label for="nome">Nome </label><input type="text" name="nome" value="${pessoa.nome}" required><br> 
 				<label for="cpf">Cpf </label><input type="text" name="cpf" value="${pessoa.cpf}" required>
 			</fieldset>
-			<fieldset>
+			<fieldset>	
 				<legend>Endereço:</legend>
-				<input type="text" name="idendereco" value="${pessoa.endereco.id}" hidden>
 				<label for="rua">Rua </label><input type="text" name="rua" value="${pessoa.endereco.rua}"><br>
 				<label for="numero">Numero </label><input type="text" name="numero" value="${pessoa.endereco.numero}"><br> 
 				<label for="bairro">Bairro</label><input type="text" name="bairro" value="${pessoa.endereco.bairro}"><br> 
-				<input type="SUBMIT" value="Atualizar pessoa"><br>
 			</fieldset>
+			<input type="SUBMIT" value="Inserir pessoa"><br>
 		</form>
 	</body>
 </html>
