@@ -31,7 +31,7 @@ public class InserirPessoa implements Acao {
 			if (pessoaDao.atualizar(pessoa)) {
 				request.setAttribute("msg", "Pessoa atualizada com sucesso, ID: " + pessoa.getId());
 			} else {
-				request.setAttribute("msg", "Erro ao atualizar pessoa, ID: " + pessoa.getId());
+				return "/lista04/erro.jsp";
 			}
 			
 		} else {
@@ -40,12 +40,12 @@ public class InserirPessoa implements Acao {
 			if (pessoa.getId() > 0) {
 				request.setAttribute("msg", "Pessoa inserir com sucesso, ID: " + pessoa.getId());
 			} else {
-				request.setAttribute("msg", "Erro ao inserir pessoa, ID: " + pessoa.getId());
+				return "/lista04/erro.jsp";
 			}
 			
 		}
 
-
+		
 		ListarPessoas acaoListarPessoas = new ListarPessoas();
 		return acaoListarPessoas.executar(request, response);
 	}
