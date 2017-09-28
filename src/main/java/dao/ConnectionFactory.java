@@ -18,10 +18,10 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 
 	public static Connection obterConexao() {
-		String nomeEsquema = "dbprojeto1";
+		String nomeEsquema = "lista04";
 		String enderecoBanco = "jdbc:mysql://localhost/" + nomeEsquema;
 		String usuario = "root";
-		String senha = "1234";
+		String senha = "";
 		String driverJDBC = "com.mysql.jdbc.Driver";
 
 		try {

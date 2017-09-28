@@ -41,6 +41,11 @@
 			<artifactId>jsf-impl</artifactId>
 			<version>${jsf.impl.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
 
 	</dependencies>
 

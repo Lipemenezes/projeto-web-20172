@@ -11,9 +11,10 @@ public class Pessoa {
 		super();
 	}
 
-	public Pessoa(Long id, String cpf, Endereco endereco) {
+	public Pessoa(Long id, String nome, String cpf, Endereco endereco) {
 		super();
 		this.id = id;
+		this.nome = nome;
 		this.cpf = cpf;
 		this.endereco = endereco;
 	}

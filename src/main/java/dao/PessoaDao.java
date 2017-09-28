@@ -27,6 +27,9 @@ public class PessoaDao {
 			ps.setString(1, p.getNome());
 			ps.setString(2, p.getCpf());
 			ps.setLong(3, p.getEndereco().getId());
+			
+			EnderecoDao enderecoDao = new EnderecoDao();
+			enderecoDao.inserir(p.getEndereco());
 
 			ps.executeUpdate();
 
@@ -80,6 +83,9 @@ public class PessoaDao {
 			instrucaoSQL.setString(1, p.getNome());
 			instrucaoSQL.setString(2, p.getCpf());
 			instrucaoSQL.setLong(3, p.getId());
+			
+			EnderecoDao enderecoDao = new EnderecoDao();
+			enderecoDao.atualizar(p.getEndereco());
 
 			int codigoRetorno = instrucaoSQL.executeUpdate();
 			if (codigoRetorno == 1) {
@@ -105,13 +111,16 @@ public class PessoaDao {
 			stmt.setInt(1, id);
 
 			ResultSet rs = stmt.executeQuery();
-			p.setId(new Long(id));
-			p.setNome(rs.getString("nome"));
-			p.setCpf(rs.getString("cpf"));
-			int idEnd = rs.getInt("endereco_id");
-			EnderecoDao endDao = new EnderecoDao();
-			Endereco endereco = endDao.obterPorId(idEnd);
-			p.setEndereco(endereco);
+			if (rs.next()) {
+				p = new Pessoa();
+				p.setId(new Long(id));
+				p.setNome(rs.getString("nome"));
+				p.setCpf(rs.getString("cpf"));
+				int idEnd = rs.getInt("endereco_id");
+				EnderecoDao endDao = new EnderecoDao();
+				Endereco endereco = endDao.obterPorId(idEnd);
+				p.setEndereco(endereco);
+			}
 			
 
 			stmt.close();
@@ -125,7 +134,7 @@ public class PessoaDao {
 	public ArrayList<Pessoa> listar() {
 		ArrayList<Pessoa> pessoas = new ArrayList<>();
 
-		String sql = "SELECT * FROM MONTADORA";
+		String sql = "SELECT * FROM PESSOA";
 
 		try {
 			PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
@@ -135,7 +144,7 @@ public class PessoaDao {
 				Long idEnd = resultadoConsulta.getLong("endereco_id");
 				EnderecoDao endDao = new EnderecoDao();
 				Endereco end = endDao.obterPorId(idEnd.intValue());
-				Pessoa p = new Pessoa(resultadoConsulta.getLong("id"), resultadoConsulta.getString("cpf"), end);
+				Pessoa p = new Pessoa(resultadoConsulta.getLong("id"), resultadoConsulta.getString("nome"), resultadoConsulta.getString("cpf"), end);
 				pessoas.add(p);
 			}
 

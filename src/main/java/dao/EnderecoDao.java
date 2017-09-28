@@ -104,10 +104,13 @@ public class EnderecoDao {
 			stmt.setInt(1, id);
 
 			ResultSet rs = stmt.executeQuery();
-			end.setId(new Long(id));
-			end.setRua(rs.getString("rua"));
-			end.setBairro(rs.getString("bairro"));
-			end.setNumero(rs.getString("numero"));
+			if(rs.next()) {
+				end = new Endereco();
+				end.setId(new Long(id));
+				end.setRua(rs.getString("rua"));
+				end.setBairro(rs.getString("bairro"));
+				end.setNumero(rs.getString("numero"));
+			}
 
 			stmt.close();
 		} catch (SQLException e) {
