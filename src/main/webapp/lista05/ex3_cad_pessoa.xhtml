@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<meta charset="UTF-8"/>
+		<title></title>
+	</h:head>
+	<h:body>
+	
+		<f:view>
+			<h:form>
+				<h:outputLabel value="Nome:"/>
+				<h:inputText value="#{atividade03Bean.pessoa.nome}">
+					<f:validateRequired />
+				</h:inputText>
+				<br/>
+				 
+				<h:outputLabel value="Cpf:"/>
+				<p:inputMask id="date" value="#{atividade03Bean.pessoa.cpf}" mask="999.999.999-99">
+					<f:validateRequired />
+				</p:inputMask>
+				<br/>
+				
+				<h:outputLabel value="Data Nasc:"/>
+				<p:calendar value="#{atividade03Bean.pessoa.cpf}">
+					<f:validateRequired />
+				</p:calendar>
+				
+				<h:commandButton action="#{atividade03Bean.salvarPessoa()}" value="salvar"/>
+				<h:commandButton action="#{atividade03Bean.voltar()}" value="voltar"/>
+			</h:form>
+		</f:view>
+		
+	</h:body>
+</html>

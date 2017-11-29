@@ -1,4 +1,4 @@
-package br.sc.senac.lista4;
+package lista4;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

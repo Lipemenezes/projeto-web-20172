@@ -1,4 +1,4 @@
-package br.com.aula01;
+package aula01;
 
 import java.io.IOException;
 import java.io.Serializable;

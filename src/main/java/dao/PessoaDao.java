@@ -19,7 +19,7 @@ public class PessoaDao {
 
 	public int inserir(Pessoa p) {
 		int idInserido = -1;
-		String sql = "INSERT INTO PESSOA(NOME, CPF, ENDERECO_ID) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO PESSOA(NOME, CPF, ENDERECO_ID, DATA_NASCIMENTO) VALUES (?, ?, ?, ?)";
 		try {
 			PreparedStatement ps = this.getConexao().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -31,6 +31,7 @@ public class PessoaDao {
 			Long idEndereco = new Long(enderecoDao.inserir(p.getEndereco()));
 			p.getEndereco().setId(idEndereco);
 			ps.setLong(3, idEndereco);
+			ps.setDate(4, new java.sql.Date(p.getDataNascimento().getTime()));
 
 			ps.executeUpdate();
 
@@ -77,23 +78,24 @@ public class PessoaDao {
 
 	public boolean atualizar(Pessoa p) {
 		boolean atualizadoSucesso = false;
-		String sql = "UPDATE PESSOA SET NOME=?, CPF=? WHERE ID=?";
+		String sql = "UPDATE PESSOA SET NOME=?, CPF=?, DATA_NASCIMENTO=? WHERE ID=?";
 
 		try {
 			PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
 			instrucaoSQL.setString(1, p.getNome());
 			instrucaoSQL.setString(2, p.getCpf());
 			instrucaoSQL.setLong(3, p.getId());
+			instrucaoSQL.setDate(4, new java.sql.Date(p.getDataNascimento().getTime()));
 			
 			EnderecoDao enderecoDao = new EnderecoDao();
 			enderecoDao.atualizar(p.getEndereco());
 
 			int codigoRetorno = instrucaoSQL.executeUpdate();
 			if (codigoRetorno == 1) {
-				System.out.println("Montadora atualizada com sucesso");
+				System.out.println("pessoa atualizada com sucesso");
 				atualizadoSucesso = true;
 			} else {
-				System.out.println("Erro ao atualizar montadora.");
+				System.out.println("Erro ao atualizar pessoa.");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -117,6 +119,7 @@ public class PessoaDao {
 				p.setId(new Long(id));
 				p.setNome(rs.getString("nome"));
 				p.setCpf(rs.getString("cpf"));
+				p.setDataNascimento(rs.getDate("data_nascimento"));
 				int idEnd = rs.getInt("endereco_id");
 				EnderecoDao endDao = new EnderecoDao();
 				Endereco endereco = endDao.obterPorId(idEnd);
@@ -148,6 +151,7 @@ public class PessoaDao {
 				p.setId(new Long(rs.getLong("id")));
 				p.setNome(rs.getString("nome"));
 				p.setCpf(rs.getString("cpf"));
+				p.setDataNascimento(rs.getDate("data_nascimento"));
 				int idEnd = rs.getInt("endereco_id");
 				EnderecoDao endDao = new EnderecoDao();
 				Endereco endereco = endDao.obterPorId(idEnd);
@@ -176,7 +180,8 @@ public class PessoaDao {
 				Long idEnd = resultadoConsulta.getLong("endereco_id");
 				EnderecoDao endDao = new EnderecoDao();
 				Endereco end = endDao.obterPorId(idEnd.intValue());
-				Pessoa p = new Pessoa(resultadoConsulta.getLong("id"), resultadoConsulta.getString("nome"), resultadoConsulta.getString("cpf"), end);
+				Pessoa p = new Pessoa(resultadoConsulta.getLong("id"), resultadoConsulta.getString("nome"), resultadoConsulta.getString("cpf"), end,
+						resultadoConsulta.getDate("data_nascimento"));
 				pessoas.add(p);
 			}
 

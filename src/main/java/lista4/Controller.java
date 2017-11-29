@@ -1,4 +1,4 @@
-package br.sc.senac.lista4;
+package lista4;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.sc.senac.lista4.Acao;
+import lista4.Acao;
 
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {

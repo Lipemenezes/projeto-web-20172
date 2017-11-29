@@ -1,4 +1,4 @@
-package br.sc.senac.lista4;
+package lista4;
 
 import java.util.List;
 

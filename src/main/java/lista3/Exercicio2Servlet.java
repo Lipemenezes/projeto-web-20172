@@ -1,4 +1,4 @@
-package br.sc.senac.lista3.servlets;
+package lista3;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

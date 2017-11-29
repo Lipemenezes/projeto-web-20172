@@ -21,7 +21,7 @@ public class ConnectionFactory {
 		String nomeEsquema = "lista04";
 		String enderecoBanco = "jdbc:mysql://localhost/" + nomeEsquema;
 		String usuario = "root";
-		String senha = "1234";
+		String senha = "";
 		String driverJDBC = "com.mysql.jdbc.Driver";
 
 		try {

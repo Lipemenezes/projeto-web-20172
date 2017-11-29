@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<meta charset="UTF-8"/>
+		<title></title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<p:outputLabel for="inline" value="Inline:" />
+	        <p:calendar id="inline" value="#{atividade02Bean.date1}" mode="inline" />
+	        
+	        <p:outputLabel for="option" value="option:" />
+	        <p:selectOneRadio id="option" value="#{atividade02Bean.option}">
+	            <f:selectItem itemLabel="R" itemValue="R" />
+	            <f:selectItem itemLabel="F" itemValue="F" />
+	        </p:selectOneRadio>
+	        
+	        <h:commandButton actionListener="#{atividade02_2Bean.proxima}" value="Submit">
+				<f:attribute name="date1" value="#{atividade02Bean.date1}" />
+				<f:attribute name="option" value="#{atividade02Bean.option}" />
+			</h:commandButton>
+		</h:form>
+	</h:body>
+</html>

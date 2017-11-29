@@ -1,22 +1,26 @@
 package entity;
 
+import java.util.Date;
+
 public class Pessoa {
 
 	private Long id;
 	private String nome;
 	private String cpf;
 	private Endereco endereco;
+	private Date dataNascimento;
 
 	public Pessoa() {
 		super();
 	}
 
-	public Pessoa(Long id, String nome, String cpf, Endereco endereco) {
+	public Pessoa(Long id, String nome, String cpf, Endereco endereco, Date dataNascimento) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.endereco = endereco;
+		this.dataNascimento = dataNascimento;
 	}
 
 	public Long getId() {
@@ -49,6 +53,14 @@ public class Pessoa {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 }
