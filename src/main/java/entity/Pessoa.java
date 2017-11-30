@@ -6,6 +6,7 @@ public class Pessoa {
 
 	private Long id;
 	private String nome;
+	private String sobrenome;
 	private String cpf;
 	private Endereco endereco;
 	private Date dataNascimento;
@@ -63,4 +64,12 @@ public class Pessoa {
 		this.dataNascimento = dataNascimento;
 	}
 
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+	
 }

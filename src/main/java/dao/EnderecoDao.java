@@ -13,7 +13,7 @@ public class EnderecoDao {
 	private Connection conexao;
 
 	public EnderecoDao() {
-		conexao = ConnectionFactory.obterConexao();
+		conexao = ConnectionFactory.getInstance().obterConexao();
 	}
 
 	public int inserir(Endereco end) {

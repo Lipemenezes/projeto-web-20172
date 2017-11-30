@@ -14,7 +14,7 @@ public class PessoaDao {
 	private Connection conexao;
 
 	public PessoaDao() {
-		conexao = ConnectionFactory.obterConexao();
+		conexao = ConnectionFactory.getInstance().obterConexao();
 	}
 
 	public int inserir(Pessoa p) {
@@ -23,7 +23,6 @@ public class PessoaDao {
 		try {
 			PreparedStatement ps = this.getConexao().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
-			// Preenche a consulta com os atributos do objeto
 			ps.setString(1, p.getNome());
 			ps.setString(2, p.getCpf());
 			

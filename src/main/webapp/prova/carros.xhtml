@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<h:head>
+		<meta charset="UTF-8"/>
+		<title></title>
+	</h:head>
+	<h:body>
+		
+
+		<h:form>
+			
+			<h:outputLabel value="Ano:"/>
+			<h:inputText value="#{provaBean.ano1}"/>
+			<h:inputText value="#{provaBean.ano2}"/>
+			<h:commandButton value="Filtrar por ano" 
+							 action="#{provaBean.filtroAno()}"
+							 styleClass="btn btn-danger"/>
+			<br/>
+	
+			<h:outputLabel value="Valor:"/>
+			<h:inputText value="#{provaBean.valor1}"/>
+			<h:inputText value="#{provaBean.valor2}"/>
+			<h:commandButton value="Filtrar por valor" 
+							 action="#{provaBean.filtroValor()}"
+							 styleClass="btn btn-danger"/>
+			<br/>
+	
+			<h:outputLabel value="Montadora:"/>
+			<h:inputText value="#{provaBean.montadora}"/>
+			<h:commandButton value="Filtrar por montadora" 
+							 action="#{provaBean.filtroMontadora()}"
+							 styleClass="btn btn-danger"/>
+			<br/>
+	
+			<h:outputLabel value="Modelo:"/>
+			<h:inputText value="#{provaBean.modelo}"/>
+			<h:commandButton value="Filtrar por modelo" 
+							 action="#{provaBean.filtroModelo()}"
+							 styleClass="btn btn-danger"/>
+			<br/>
+			
+		</h:form>
+
+				
+		<f:view>
+			Carros:
+			<h:dataTable value="#{provaBean.carros}" 
+						 var="carro"
+						 border="1">
+			   <h:column>    				
+			      <f:facet name="header">Ano</f:facet>    				
+			      #{carro.ano}
+			   </h:column>
+			   <h:column>    				
+			      <f:facet name="header">Modelo</f:facet>    				
+			     #{carro.modelo}
+			   </h:column>
+			   <h:column>    				
+			      <f:facet name="header">Valor</f:facet>    				
+			      #{carro.valor}
+			   </h:column>
+			   <h:column>    				
+			      <f:facet name="header">Montadora</f:facet>    				
+			      #{carro.montadora.nome}
+			   </h:column>
+			</h:dataTable>
+		</f:view>
+	</h:body>
+</html>
